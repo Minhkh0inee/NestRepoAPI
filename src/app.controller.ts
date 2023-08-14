@@ -1,6 +1,12 @@
-import {Controller, Get, Post, UploadedFile, UseInterceptors} from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 import { AppService } from './app.service';
-import {FileInterceptor} from "@nestjs/platform-express";
+import { FileInterceptor } from '@nestjs/platform-express';
 import { createReadStream } from 'fs';
 import * as ExcelJS from 'exceljs'; // library is commonly used to work with Excel files in JavaScript
 
