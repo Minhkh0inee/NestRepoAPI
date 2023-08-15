@@ -3,12 +3,25 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 import { MongoRepository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UsersService {
-  constructor(private repo: MongoRepository<User>) {}
+  constructor(@InjectRepository(User) private repo: MongoRepository<User>) {}
 
-  create(createUserDto: CreateUserDto) {
+  create(createUserDto: CreateUserDto): Promise<User> {
+    const user = new User();
+    user.name = createUserDto.name;
+    user.department = createUserDto.department;
+    user.gender = createUserDto.gender;
+    user.studentId = createUserDto.studentId;
+    user.course = createUserDto.course;
+    user.email = createUserDto.email;
+    user.dob = createUserDto.dob;
+    user.phone = createUserDto.phone;
+    user.citizenId = createUserDto.citizenId;
+    user.address = createUserDto.address;
+    user.facebookLink = createUserDto.facebookLink;
     return this.repo.save(createUserDto);
   }
 

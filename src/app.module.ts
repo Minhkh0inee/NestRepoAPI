@@ -8,6 +8,7 @@ import { FileService } from './files/file/file.service';
 import { ProcessFileService } from './process-file/process-file/process-file.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
+import { UsersService } from "./users/users.service";
 
 @Module({
   imports: [
@@ -29,6 +30,6 @@ import { UsersModule } from './users/users.module';
     UsersModule,
   ],
   controllers: [AppController, FileController],
-  providers: [AppService, FileService, ProcessFileService],
+  providers: [AppService, FileService, ProcessFileService, UsersService],
 })
 export class AppModule {}
